@@ -11,6 +11,24 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Color theme
+	-- use({
+	-- 	"Shatur/neovim-ayu",
+	-- 	as = "ayu",
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme ayu-dark")
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	as = "gruvbox",
+	-- 	config = function()
+	-- 		vim.o.background = "dark"
+	-- 		require("gruvbox").setup({
+	-- 			contrast = "hard", -- can be "hard", "soft" or empty string
+	-- 		})
+	-- 		vim.cmd("colorscheme gruvbox")
+	-- 	end,
+	-- })
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -33,6 +51,16 @@ return require("packer").startup(function(use)
 		config = function()
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
+	})
+
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
 	})
 
 	-- Telescope

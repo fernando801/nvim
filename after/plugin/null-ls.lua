@@ -30,9 +30,9 @@ null_ls.setup({
 				callback = function()
 					-- on 0.8, you should use
 					vim.lsp.buf.format({
-						filter = function(client)
-							return client.name == "null-ls" or client.name == "astro"
-						end,
+						-- filter = function(client)
+						-- 	return client.name == "null-ls" or client.name == "astro"
+						-- end,
 						bufnr = bufnr,
 					})
 					-- instead
