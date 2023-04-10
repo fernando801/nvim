@@ -11,24 +11,6 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Color theme
-	-- use({
-	-- 	"Shatur/neovim-ayu",
-	-- 	as = "ayu",
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme ayu-dark")
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	as = "gruvbox",
-	-- 	config = function()
-	-- 		vim.o.background = "dark"
-	-- 		require("gruvbox").setup({
-	-- 			contrast = "hard", -- can be "hard", "soft" or empty string
-	-- 		})
-	-- 		vim.cmd("colorscheme gruvbox")
-	-- 	end,
-	-- })
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -36,13 +18,6 @@ return require("packer").startup(function(use)
 			vim.cmd("colorscheme catppuccin-mocha")
 		end,
 	})
-	-- use({
-	-- 	"rose-pine/neovim",
-	-- 	as = "rose-pine",
-	-- 	config = function()
-	-- 		vim.cmd("colorscheme rose-pine")
-	-- 	end,
-	-- })
 
 	-- Greeting Screen
 	use({
@@ -139,6 +114,9 @@ return require("packer").startup(function(use)
 	-- Formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
+
+	-- Copilot
+	use("github/copilot.vim")
 
 	-- LSP
 	use({
