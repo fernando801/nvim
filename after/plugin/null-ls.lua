@@ -11,7 +11,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.prettierd,
 		formatting.prettierd.with({
-			extra_args = { "--single-quote", "--jsx-single-quote" },
+			extra_args = { "--single-quote" },
 			extra_filetypes = {
 				"astro",
 			},

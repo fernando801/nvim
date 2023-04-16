@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>s", "<cmd>Neotree float git_status<CR>", { noremap 
 require("neo-tree").setup({
 	close_if_last_window = true,
 	filesystem = {
+		follow_current_file = true,
 		components = {
 			harpoon_index = function(config, node, state)
 				local Marked = require("harpoon.mark")
