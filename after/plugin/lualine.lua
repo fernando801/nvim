@@ -2,8 +2,17 @@ require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		--   vim = { "", "", "" },
+		--   diff_icons = { added = "", modified = "", removed = "" },
+		--   github = { "", "", "" },
+		--   diagnostics = { error = " ", warn = " ", info = " ", hint = " " },
+		--   default = { left = "", right = "" },
+		--   round = { left = "", right = "" },
+		--   block = { left = "█", right = "█" },
+		--   arrow = { left = "", right = "" },
+		--   component_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
@@ -18,12 +27,45 @@ require("lualine").setup({
 		},
 	},
 	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { "filename" },
-		lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
+		lualine_a = {
+			{
+				"mode",
+				icon = "",
+			},
+		},
+		lualine_b = {
+			{
+				"branch",
+				icon = "",
+			},
+			{
+				"diff",
+				symbols = { added = " ", modified = " ", removed = " " },
+			},
+		},
+		lualine_c = { "buffers" },
+		lualine_x = {
+			{
+				"diagnostics",
+				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			},
+			"filetype",
+			"encoding",
+			"fileformat",
+		},
+		lualine_y = {
+			{
+				"location",
+				padding = { left = 0, right = 1 },
+			},
+		},
+		lualine_z = {
+			{
+				"progress",
+				icon = "",
+				padding = { left = 0, right = 1 },
+			},
+		},
 	},
 	inactive_sections = {
 		lualine_a = {},
