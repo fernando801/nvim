@@ -18,7 +18,7 @@ null_ls.setup({
 		}),
 		formatting.rustfmt,
 		formatting.autopep8,
-		diagnostics.eslint,
+		diagnostics.eslint_d,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	on_attach = function(client, bufnr)
@@ -44,5 +44,5 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-	ensure_installed = { "stylua", "prettier", "prettierd", "eslint", "rustfmt", "autopep8" },
+	ensure_installed = { "stylua", "prettier", "prettierd", "eslint_d", "rustfmt", "autopep8" },
 })

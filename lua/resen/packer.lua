@@ -28,6 +28,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- File Tree
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
