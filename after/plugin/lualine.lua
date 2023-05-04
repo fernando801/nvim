@@ -43,7 +43,7 @@ require("lualine").setup({
 				symbols = { added = " ", modified = " ", removed = " " },
 			},
 		},
-		lualine_c = { "buffers" },
+		lualine_c = { "filename" },
 		lualine_x = {
 			{
 				"diagnostics",
