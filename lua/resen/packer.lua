@@ -117,9 +117,9 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
 
-	-- Copilot
-	use("github/copilot.vim")
-
+	-- -- Copilot
+	-- use("github/copilot.vim")
+	--
 	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",

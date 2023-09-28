@@ -9,15 +9,16 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	sources = {
 		formatting.stylua,
-		formatting.prettierd,
-		formatting.prettierd.with({
-			extra_args = { "--single-quote" },
-			extra_filetypes = {
-				"astro",
-			},
-		}),
+		-- formatting.prettierd,
+		-- formatting.prettierd.with({
+		-- 	extra_args = { "--single-quote", "--tab-width 4" },
+		-- 	extra_filetypes = {
+		-- 		"astro",
+		-- 	},
+		-- }),
 		formatting.rustfmt,
 		formatting.autopep8,
+		formatting.eslint_d,
 		diagnostics.eslint_d,
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
@@ -30,9 +31,9 @@ null_ls.setup({
 				callback = function()
 					-- on 0.8, you should use
 					vim.lsp.buf.format({
-						-- filter = function(client)
-						-- 	return client.name == "null-ls" or client.name == "astro"
-						-- end,
+						filter = function(client)
+							return client.name == "null-ls"
+						end,
 						bufnr = bufnr,
 					})
 					-- instead
@@ -44,5 +45,13 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-	ensure_installed = { "stylua", "prettier", "prettierd", "eslint_d", "rustfmt", "autopep8" },
+	ensure_installed = {
+		"stylua",
+		-- "prettier",
+		-- "prettierd",
+		"eslint",
+		"eslint_d",
+		"rustfmt",
+		"autopep8",
+	},
 })
