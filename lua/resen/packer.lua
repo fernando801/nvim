@@ -8,7 +8,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Icons
-	use("kyazdani42/nvim-web-devicons")
+	use("nvim-tree/nvim-web-devicons")
 
 	-- Color theme
 	use({
@@ -51,7 +51,7 @@ return require("packer").startup(function(use)
 	-- Lualine
 	use({
 		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	})
 
 	-- Treesitter
@@ -117,9 +117,9 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
 
-	-- -- Copilot
-	-- use("github/copilot.vim")
-	--
+	-- Copilot
+	use("github/copilot.vim")
+
 	-- LSP
 	use({
 		"VonHeikemen/lsp-zero.nvim",
