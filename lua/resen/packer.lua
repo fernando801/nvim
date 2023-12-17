@@ -86,7 +86,7 @@ return require("packer").startup(function(use)
 	-- Surrounds
 	use("kylechui/nvim-surround")
 
-	-- Commets
+	-- Comments
 	use({
 		"numToStr/Comment.nvim",
 		config = function()

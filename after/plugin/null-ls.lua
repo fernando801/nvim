@@ -48,7 +48,7 @@ require("mason-null-ls").setup({
 	ensure_installed = {
 		"stylua",
 		-- "prettier",
-		-- "prettierd",
+		"prettierd",
 		"eslint",
 		"eslint_d",
 		"rustfmt",
