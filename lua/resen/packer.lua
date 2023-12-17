@@ -31,11 +31,12 @@ return require("packer").startup(function(use)
 	-- File Tree
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		requires = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
 	})
 
@@ -46,7 +47,11 @@ return require("packer").startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+	use("nvim-telescope/telescope-ui-select.nvim")
 	use("nvim-telescope/telescope-file-browser.nvim")
+
+	-- UI select/input
+	use("stevearc/dressing.nvim")
 
 	-- Lualine
 	use({
@@ -112,6 +117,9 @@ return require("packer").startup(function(use)
 			require("nvim-ts-autotag").setup({})
 		end,
 	})
+
+	-- Notifications
+	use("rcarriga/nvim-notify")
 
 	-- Formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim")

@@ -8,53 +8,48 @@ lsp.ensure_installed({
 	"rust_analyzer",
 })
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-local select_opts = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	-- confirm selection
-	["<CR>"] = cmp.mapping.confirm({ select = false }),
-	["<C-y>"] = cmp.mapping.confirm({ select = false }),
-	["<Tab>"] = cmp.mapping.confirm({ select = false }),
-
-	-- navigate items on the list
-	["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-	["<Down>"] = cmp.mapping.select_next_item(select_opts),
-	["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
-	["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-
-	-- scroll up and down in the completion documentation
-	["<C-f>"] = cmp.mapping.scroll_docs(5),
-	["<C-u>"] = cmp.mapping.scroll_docs(-5),
-
-	-- toggle completion
-	["<C-Space>"] = cmp.mapping.complete(),
-
-	-- go to next placeholder in the snippet
-	["<C-d>"] = cmp.mapping(function(fallback)
-		if luasnip.jumpable(1) then
-			luasnip.jump(1)
-		else
-			fallback()
-		end
-	end, { "i", "s" }),
-
-	-- go to previous placeholder in the snippet
-	["<C-b>"] = cmp.mapping(function(fallback)
-		if luasnip.jumpable(-1) then
-			luasnip.jump(-1)
-		else
-			fallback()
-		end
-	end, { "i", "s" }),
-})
-
--- If you want insert `(` after select function or method item
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings,
+	formatting = {
+		fields = { "abbr", "kind", "menu" },
+		format = function(entry, item)
+			local symbol_map = {
+				Text = "󰉿",
+				Method = "󰆧",
+				Function = "󰊕",
+				Constructor = "󱌣", --  | 󰣪 | 󱌣
+				Field = "󱁐", -- 󱁐 | 󰜢
+				Variable = "󰫧", -- 󰫧 | 󰀫
+				Class = "󰠱",
+				Interface = "",
+				Module = "", -- 󰜘 |  | 󰜙 |  |  | 
+				Property = "󰜢",
+				Unit = "󰑭",
+				Value = "󰎠",
+				Enum = "",
+				Keyword = "󰌋",
+				Snippet = "",
+				Color = "󰏘",
+				File = "󰈙",
+				Reference = "󰈇",
+				Folder = "󰉋",
+				EnumMember = "",
+				Constant = "󰏿",
+				Struct = "󰙅",
+				Event = "",
+				Operator = "󰆕",
+				TypeParameter = "",
+			}
+
+			item.kind = symbol_map[item.kind] .. " " .. item.kind
+			item.menu = ({
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				buffer = "[Buffer]",
+				path = "[Path]",
+			})[entry.source.name]
+			return item
+		end,
+	},
 })
 
 lsp.on_attach(function(client, bufnr)
