@@ -51,7 +51,6 @@ require("mason-null-ls").setup({
 		"prettierd",
 		"eslint",
 		"eslint_d",
-		"rustfmt",
 		"autopep8",
 	},
 })
