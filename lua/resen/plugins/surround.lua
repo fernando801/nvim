@@ -1,5 +1,3 @@
-require("nvim-surround").setup()
-
 --     Old text                    Command         New text
 -- --------------------------------------------------------------------------------
 --     surr*ound_words             ysiw)           (surround_words)
@@ -9,3 +7,9 @@ require("nvim-surround").setup()
 --     'change quot*es'            cs'"            "change quotes"
 --     <b>or tag* types</b>        csth1<CR>       <h1>or tag types</h1>
 --     delete(functi*on calls)     dsf             function calls
+
+return {
+	"kylechui/nvim-surround",
+	event = { "BufReadPre", "BufNewFile" },
+	config = true,
+}

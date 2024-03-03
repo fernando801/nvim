@@ -24,6 +24,13 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 100
 
 vim.opt.colorcolumn = "80"
+
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	update_in_insert = true,
+	severity_sort = true,
+})
