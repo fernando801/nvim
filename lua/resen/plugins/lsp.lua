@@ -46,6 +46,7 @@ return {
 			ensure_installed = {
 				"tsserver",
 				"eslint",
+				"pyright",
 				"lua_ls",
 				"rust_analyzer",
 			},
