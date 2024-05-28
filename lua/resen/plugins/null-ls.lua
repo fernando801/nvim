@@ -24,6 +24,7 @@ return {
 				-- 		"astro",
 				-- 	},
 				-- }),
+				formatting.clang_format,
 				formatting.autopep8,
 				formatting.eslint_d,
 				diagnostics.eslint_d,
@@ -38,6 +39,7 @@ return {
 						callback = function()
 							-- on 0.8, you should use
 							vim.lsp.buf.format({
+								async = false,
 								filter = function(client)
 									return client.name == "null-ls"
 								end,
@@ -54,6 +56,7 @@ return {
 		require("mason-null-ls").setup({
 			ensure_installed = {
 				"stylua",
+				"clangd",
 				-- "prettier",
 				"prettierd",
 				"eslint",

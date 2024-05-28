@@ -5,7 +5,7 @@ return {
 		options = {
 			icons_enabled = true,
 			theme = "auto",
-			--   vim = { "", "", "" },
+			--   vim = { "", "", "", "" },
 			--   diff_icons = { added = "", modified = "", removed = "" },
 			--   github = { "", "", "" },
 			--   diagnostics = { error = " ", warn = " ", info = " ", hint = " " },
@@ -33,7 +33,7 @@ return {
 			lualine_a = {
 				{
 					"mode",
-					icon = "",
+					icon = "",
 				},
 			},
 			lualine_b = {
