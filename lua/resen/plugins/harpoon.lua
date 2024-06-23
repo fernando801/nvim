@@ -5,6 +5,16 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
 	},
+	keys = {
+		{ "<leader>e" },
+		{ "<leader>a" },
+		{ "<D-j>" },
+		{ "<D-k>" },
+		{ "<D-l>" },
+		{ "<D-;>" },
+		{ "<C-S-P>" },
+		{ "<C-S-N>" },
+	},
 	config = function()
 		local harpoon = require("harpoon")
 
@@ -19,16 +29,16 @@ return {
 			harpoon:list():add()
 		end)
 
-		vim.keymap.set("n", "<M-j>", function()
+		vim.keymap.set("n", "<D-j>", function()
 			harpoon:list():select(1)
 		end)
-		vim.keymap.set("n", "<M-k>", function()
+		vim.keymap.set("n", "<D-k>", function()
 			harpoon:list():select(2)
 		end)
-		vim.keymap.set("n", "<M-l>", function()
+		vim.keymap.set("n", "<D-l>", function()
 			harpoon:list():select(3)
 		end)
-		vim.keymap.set("n", "<M-;>", function()
+		vim.keymap.set("n", "<D-;>", function()
 			harpoon:list():select(4)
 		end)
 
