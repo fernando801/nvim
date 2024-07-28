@@ -42,31 +42,33 @@ return {
 				enabled = true,
 			},
 			components = {
-				-- TODO: Get this to work
-				-- harpoon_index = function(config, node, state)
-				-- 	local harpoon = require("harpoon")
-				-- 	local path = node:get_id()
-				--
-				-- 	local succuss, index = pcall(function()
-				-- 		harpoon:config():equals(harpoon:list().items[3].value, path)
-				-- 		harpoon:list():index_of(harpoon:list().items, #harpoon:list().items, path, harpoon:config())
-				-- 	end)
-				--
-				-- 	if succuss and index and index > 0 then
-				-- 		return {
-				-- 			text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
-				-- 			highlight = config.highlight or "NeoTreeDirectoryIcon",
-				-- 		}
-				-- 	else
-				-- 		return {}
-				-- 	end
-				-- end,
+				harpoon_index = function(config, node, state)
+					local harpoon = require("harpoon")
+					local cwd = vim.uv.cwd()
+					local full_path = node:get_id()
+
+					local path = full_path:sub(1, #cwd) == cwd and full_path:sub(#cwd + 2) or full_path -- +2 to remove the trailing slash as well
+
+					local success, index = pcall(function()
+						local _, index = harpoon:list():get_by_value(path)
+						return index
+					end)
+
+					if success and index and index > 0 then
+						return {
+							text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
+							highlight = config.highlight or "NeoTreeDirectoryIcon",
+						}
+					else
+						return {}
+					end
+				end,
 			},
 			renderers = {
 				file = {
 					{ "icon" },
 					{ "name", use_git_status_colors = true },
-					-- { "harpoon_index" }, --> This is what actually adds the component in where you want it
+					{ "harpoon_index" }, --> This is what actually adds the component in where you want it
 					{ "diagnostics" },
 					{ "git_status", highlight = "NeoTreeDimText" },
 				},
