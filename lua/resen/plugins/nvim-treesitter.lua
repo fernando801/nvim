@@ -25,6 +25,7 @@ return {
 				"astro",
 				"markdown",
 				"markdown_inline",
+				"sql",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)

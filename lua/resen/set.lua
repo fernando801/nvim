@@ -34,3 +34,5 @@ vim.diagnostic.config({
 	update_in_insert = true,
 	severity_sort = true,
 })
+
+vim.cmd([[ let g:omni_sql_no_default_maps = 1 ]])
