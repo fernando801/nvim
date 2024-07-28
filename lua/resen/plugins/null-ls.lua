@@ -59,7 +59,6 @@ return {
 				"clangd",
 				-- "prettier",
 				"prettierd",
-				"eslint",
 				"eslint_d",
 				"autopep8",
 			},
