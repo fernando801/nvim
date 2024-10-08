@@ -28,6 +28,7 @@ return {
 				formatting.autopep8,
 				formatting.eslint_d,
 				diagnostics.eslint_d,
+				formatting.rustfmt,
 			},
 			-- you can reuse a shared lspconfig on_attach callback here
 			on_attach = function(client, bufnr)
