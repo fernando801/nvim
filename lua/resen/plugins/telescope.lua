@@ -15,6 +15,7 @@ return {
 		vim.keymap.set("n", "<leader>gf", builtin.git_files, { noremap = true })
 		vim.keymap.set("n", "<leader>rg", builtin.live_grep, { noremap = true })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { noremap = true })
+		vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true })
 		-- vim.keymap.set("n", "<leader>bf", builtin.buffers, { noremap = true })
 		vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
 		vim.keymap.set(

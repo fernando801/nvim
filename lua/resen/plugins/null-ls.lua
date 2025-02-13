@@ -1,8 +1,9 @@
 -- Formatting and linting
 return {
-	"jose-elias-alvarez/null-ls.nvim",
+	"nvimtools/none-ls.nvim",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"nvimtools/none-ls-extras.nvim",
 		"jayp0521/mason-null-ls.nvim",
 	},
 	config = function()
@@ -25,10 +26,10 @@ return {
 				-- 	},
 				-- }),
 				formatting.clang_format,
-				formatting.autopep8,
-				formatting.eslint_d,
-				diagnostics.eslint_d,
-				formatting.rustfmt,
+				require("none-ls.formatting.autopep8"),
+				require("none-ls.formatting.eslint_d"),
+				require("none-ls.formatting.rustfmt"),
+				require("none-ls.diagnostics.eslint_d"),
 			},
 			-- you can reuse a shared lspconfig on_attach callback here
 			on_attach = function(client, bufnr)
@@ -59,7 +60,7 @@ return {
 				"stylua",
 				"clangd",
 				-- "prettier",
-				"prettierd",
+				-- "prettierd",
 				"eslint_d",
 				"autopep8",
 			},
