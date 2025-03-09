@@ -3,12 +3,5 @@ return {
 	lazy = true,
 	opts = {
 		default = true,
-		override = {
-			toml = {
-				icon = "", --  |  |  |
-				-- color = "#61afef",
-				-- name = "Toml",
-			},
-		},
 	},
 }
