@@ -35,7 +35,5 @@ return {
 		-- }
 
 		alpha.setup(theta.config)
-
-		-- require("alpha").setup(require("alpha.themes.theta").config)
 	end,
 }
