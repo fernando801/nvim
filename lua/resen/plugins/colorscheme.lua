@@ -6,7 +6,7 @@ return {
 	config = function()
 		vim.cmd("colorscheme catppuccin-mocha")
 
-		groups = { -- table: default groups
+		local groups = { -- table: default groups
 			"Normal",
 			"NormalFloat",
 			"NormalNC",
