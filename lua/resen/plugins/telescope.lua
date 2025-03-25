@@ -18,6 +18,7 @@ return {
 		vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true })
 		-- vim.keymap.set("n", "<leader>bf", builtin.buffers, { noremap = true })
 		vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { noremap = true })
+		-- Find hidden and ignored files
 		vim.keymap.set(
 			"n",
 			"<leader>hf",

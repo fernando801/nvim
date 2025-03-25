@@ -2,7 +2,11 @@ return {
 	"stevearc/oil.nvim",
 	---@module 'oil'
 	---@type oil.SetupOpts
-	opts = {},
+	opts = {
+		keymaps = {
+			["H"] = { "actions.toggle_hidden", mode = "n" },
+		},
+	},
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- dependencies = { { "echasnovski/mini.icons", opts = {} } }, -- use if you prefer mini.icons
