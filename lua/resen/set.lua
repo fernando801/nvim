@@ -35,4 +35,6 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+vim.o.winborder = "rounded"
+
 vim.cmd([[ let g:omni_sql_no_default_maps = 1 ]])
