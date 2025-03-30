@@ -5,16 +5,10 @@ return {
 	dependencies = {
 		"L3MON4D3/LuaSnip",
 		"windwp/nvim-autopairs",
-		"VonHeikemen/lsp-zero.nvim",
 	},
 	config = function()
-		-- Here is where you configure the autocompletion settings.
-		local lsp_zero = require("lsp-zero")
-		lsp_zero.extend_cmp()
-
-		-- And you can configure cmp even more, if you want to.
 		local cmp = require("cmp")
-		local cmp_action = lsp_zero.cmp_action()
+		local luasnip = require("luasnip")
 		local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 		-- If you want insert `(` after select function or method item
@@ -83,8 +77,20 @@ return {
 				["<C-u>"] = cmp.mapping.scroll_docs(-5),
 
 				-- navigate snippets
-				["<C-f>"] = cmp_action.luasnip_jump_forward(),
-				["<C-b>"] = cmp_action.luasnip_jump_backward(),
+				["<C-f>"] = cmp.mapping(function(fallback)
+					if luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<C-b>"] = cmp.mapping(function(fallback)
+					if luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
 			sources = {
 				{ name = "nvim_lsp" },
