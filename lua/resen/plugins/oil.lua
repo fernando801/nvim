@@ -5,6 +5,7 @@ return {
 	opts = {
 		keymaps = {
 			["H"] = { "actions.toggle_hidden", mode = "n" },
+			["<leader>b"] = { "actions.close", mode = "n" },
 		},
 	},
 	-- Optional dependencies
@@ -14,5 +15,6 @@ return {
 	lazy = false,
 	keys = {
 		{ "<leader>-", "<cmd>Oil --float<CR>", desc = "Open parent directory" },
+		{ "<leader>b", "<cmd>Oil --float<CR>", desc = "Open parent directory" },
 	},
 }
