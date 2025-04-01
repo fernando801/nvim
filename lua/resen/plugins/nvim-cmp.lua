@@ -73,18 +73,18 @@ return {
 				["<C-n>"] = cmp.mapping.select_next_item(select_opts),
 
 				-- scroll up and down in the completion documentation
-				["<C-d>"] = cmp.mapping.scroll_docs(5),
-				["<C-u>"] = cmp.mapping.scroll_docs(-5),
+				["<C-f>"] = cmp.mapping.scroll_docs(5),
+				["<C-b>"] = cmp.mapping.scroll_docs(-5),
 
 				-- navigate snippets
-				["<C-f>"] = cmp.mapping(function(fallback)
+				["<C-d>"] = cmp.mapping(function(fallback)
 					if luasnip.locally_jumpable(1) then
 						luasnip.jump(1)
 					else
 						fallback()
 					end
 				end, { "i", "s" }),
-				["<C-b>"] = cmp.mapping(function(fallback)
+				["<C-u>"] = cmp.mapping(function(fallback)
 					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
 					else
