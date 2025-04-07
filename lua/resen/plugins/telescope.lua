@@ -15,7 +15,7 @@ return {
 		vim.keymap.set("n", "<leader>gh", builtin.help_tags, { noremap = true })
 		vim.keymap.set("n", "<leader>gb", builtin.buffers, { noremap = true })
 		vim.keymap.set("n", "gd", builtin.lsp_definitions, { noremap = true })
-		vim.keymap.set("n", "gr", builtin.lsp_references, { noremap = true })
+		vim.keymap.set("n", "grr", builtin.lsp_references, { noremap = true })
 		-- Find hidden and ignored files
 		vim.keymap.set("n", "<leader>hf", function()
 			builtin.find_files({ hidden = true, no_ignore = true })
