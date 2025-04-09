@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"nvim-treesitter/playground",
 		"nvim-treesitter/nvim-treesitter-context",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -65,6 +66,23 @@ return {
 				-- Using this option may slow down your editor, and you may see some duplicate highlights.
 				-- Instead of true it can also be a list of languages
 				additional_vim_regex_highlighting = false,
+			},
+
+			-- For more information about textobjects configurations read the docs at https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+			textobjects = {
+				select = {
+					enable = true,
+					-- Automatically jump forward to textobj, similar to targets.vim
+					lookahead = true,
+					keymaps = {
+						-- You can use the capture groups defined in textobjects.scm
+						["af"] = { query = "@function.outer", desc = "Select outer part of a function" },
+						["if"] = { query = "@function.inner", desc = "Select inner part of a function" },
+						["ac"] = { query = "@class.outer", desc = "Select outer part of a class region" },
+						["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+					},
+					include_surrounding_whitespace = true,
+				},
 			},
 
 			indent = {
