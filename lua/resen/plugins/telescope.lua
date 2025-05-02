@@ -20,5 +20,19 @@ return {
 		vim.keymap.set("n", "<leader>hf", function()
 			builtin.find_files({ hidden = true, no_ignore = true })
 		end, { noremap = true })
+
+		-- Temporary fix until Telescope/Plenary supports 0.11 vim.o.winborder = "rounded"
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "TelescopeFindPre",
+			callback = function()
+				vim.opt_local.winborder = "none"
+				vim.api.nvim_create_autocmd("WinLeave", {
+					once = true,
+					callback = function()
+						vim.opt_local.winborder = "rounded"
+					end,
+				})
+			end,
+		})
 	end,
 }
