@@ -5,7 +5,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"williamboman/mason-lspconfig.nvim",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -31,34 +30,7 @@ return {
 				vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
 				vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("n", "<leader>rnm", vim.lsp.buf.rename, opts)
-
-				-- Enable neovim autocompletion
-				--
-				-- local client = vim.lsp.get_client_by_id(ev.data.client_id)
-				--
-				-- if client:supports_method("textDocument/completion") then
-				-- 	vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-				-- end
 			end,
-		})
-
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"ts_ls",
-				"pyright",
-				"lua_ls",
-				"rust_analyzer",
-			},
-			-- See `:h mason-lspconfig.setup_handlers()`
-			---@type table<string, fun(server_name: string)>?
-			handlers = {
-				-- The first entry (without a key) will be the default handler
-				-- and will be called for each installed server that doesn't have
-				-- a dedicated handler.
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({})
-				end,
-			},
 		})
 	end,
 }
