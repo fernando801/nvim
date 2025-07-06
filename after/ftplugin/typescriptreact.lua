@@ -1,8 +1,5 @@
-local file_path = vim.fn.expand("%:p")
-local work_dir = vim.fn.expand("$WORK_DIR")
-
 local indent = 2
-if string.find(file_path, work_dir, 1, true) == 1 then
+if require("resen.utils").is_file_inside_work_dir() then
 	indent = 4
 end
 
