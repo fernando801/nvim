@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"L3MON4D3/LuaSnip",
 		"windwp/nvim-autopairs",
+		"hrsh7th/cmp-buffer",
 	},
 	config = function()
 		local cmp = require("cmp")
