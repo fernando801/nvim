@@ -21,7 +21,11 @@ return {
 			builtin.find_files({ hidden = true, no_ignore = true })
 		end, { noremap = true })
 
-		-- Temporary fix until Telescope/Plenary supports 0.11 vim.o.winborder = "rounded"
+		-- This was originally a fix for a Telescope/Plenary bug where windows
+		-- would have a double border when setting vim.o.winborder = "rounded".
+		-- The original issue has been fixed but the border has a background
+		-- that is not transparent this ensures the border for the telescope
+		-- windows remain transparent.
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "TelescopeFindPre",
 			callback = function()
