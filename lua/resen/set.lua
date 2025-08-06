@@ -38,3 +38,10 @@ vim.diagnostic.config({
 vim.o.winborder = "rounded"
 
 vim.cmd([[ let g:omni_sql_no_default_maps = 1 ]])
+
+-- In your init.lua
+vim.opt.list = true
+vim.opt.listchars = {
+	tab = "→ ", -- Show tabs as right-pointing arrow followed by space
+	trail = "•", -- Show trailing spaces as bullet points
+}
