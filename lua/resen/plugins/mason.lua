@@ -7,6 +7,7 @@ return {
 	opts = {
 		ensure_installed = {
 			"ts_ls",
+			"tailwindcss",
 			"pyright",
 			"lua_ls",
 			"rust_analyzer",
