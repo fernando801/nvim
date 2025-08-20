@@ -11,25 +11,55 @@ return {
 
 		local formatting = null_ls.builtins.formatting
 		local diagnostics = null_ls.builtins.diagnostics
-		-- local completion = null_ls.builtins.completion
 
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 		null_ls.setup({
 			sources = {
 				formatting.stylua,
-				-- formatting.prettierd,
-				-- formatting.prettierd.with({
-				-- 	extra_args = { "--single-quote", "--tab-width 4" },
-				-- 	extra_filetypes = {
-				-- 		"astro",
-				-- 	},
-				-- }),
+				formatting.prettierd.with({
+					condition = function(utils)
+						-- Check for explicit prettier config files
+						return utils.root_has_file({
+							-- .prettierrc
+							".prettierrc",
+							".prettierrc.json",
+							".prettierrc.yml",
+							".prettierrc.yaml",
+							-- js and ts
+							".prettierrc.js",
+							".prettierrc.ts",
+							"prettier.config.js",
+							"prettier.config.ts",
+							-- mjs and mts
+							".prettierrc.mjs",
+							".prettierrc.mts",
+							"prettier.config.mjs",
+							"prettier.config.mts",
+							-- cjs and cts
+							".prettierrc.cjs",
+							".prettierrc.cts",
+							"prettier.config.cjs",
+							"prettier.config.cts",
+							-- toml
+							".prettierrc.toml",
+						})
+					end,
+				}),
 				formatting.clang_format,
 				require("none-ls.formatting.autopep8"),
 				require("none-ls.formatting.eslint_d"),
 				require("none-ls.formatting.rustfmt"),
-				require("none-ls.diagnostics.eslint_d"),
+				require("none-ls.diagnostics.eslint_d").with({
+					condition = function(utils)
+						return utils.root_has_file({
+							".eslintrc.js",
+							".eslintrc.json",
+							".eslintrc.cjs",
+							"eslint.config.js",
+						})
+					end,
+				}),
 			},
 			-- you can reuse a shared lspconfig on_attach callback here
 			on_attach = function(client, bufnr)
@@ -59,8 +89,7 @@ return {
 			ensure_installed = {
 				"stylua",
 				"clangd",
-				-- "prettier",
-				-- "prettierd",
+				"prettierd",
 				"eslint_d",
 				"autopep8",
 			},
