@@ -1,8 +1,7 @@
-local indent = 2
-if require("resen.utils").is_file_inside_work_dir() then
-	indent = 4
-end
+local ts_indent_size = 2
 
-vim.opt.tabstop = indent
-vim.opt.softtabstop = indent
-vim.opt.shiftwidth = indent
+if not require("resen.utils").is_file_inside_work_dir() then
+	vim.opt.tabstop = ts_indent_size
+	vim.opt.softtabstop = ts_indent_size
+	vim.opt.shiftwidth = ts_indent_size
+end
