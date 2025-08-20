@@ -50,16 +50,7 @@ return {
 				require("none-ls.formatting.autopep8"),
 				require("none-ls.formatting.eslint_d"),
 				require("none-ls.formatting.rustfmt"),
-				require("none-ls.diagnostics.eslint_d").with({
-					condition = function(utils)
-						return utils.root_has_file({
-							".eslintrc.js",
-							".eslintrc.json",
-							".eslintrc.cjs",
-							"eslint.config.js",
-						})
-					end,
-				}),
+				require("none-ls.diagnostics.eslint_d"),
 			},
 			-- you can reuse a shared lspconfig on_attach callback here
 			on_attach = function(client, bufnr)
