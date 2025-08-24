@@ -6,10 +6,15 @@ return {
 	config = function()
 		vim.cmd("colorscheme catppuccin-mocha")
 
+		local float_border_hl_before = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
+		print(float_border_hl_before.fg)
+
 		local groups = { -- table: default groups
 			"Normal",
 			"NormalFloat",
 			"NormalNC",
+			"FloatTitle",
+			"FloatBorder",
 			-- "Comment",
 			-- "Constant",
 			-- "Special",
@@ -36,11 +41,10 @@ return {
 		}
 
 		for _, group in ipairs(groups) do
-			vim.api.nvim_set_hl(0, group, { bg = "none" })
+			--- @type vim.api.keyset.highlight
+			local hl = vim.api.nvim_get_hl(0, { name = group })
+			hl.bg = "none" -- override only the background
+			vim.api.nvim_set_hl(0, group, hl)
 		end
-
-		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		--
-		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	end,
 }

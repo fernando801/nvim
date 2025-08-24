@@ -6,7 +6,7 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
-		require("telescope").setup()
+		require("telescope").setup({})
 		local builtin = require("telescope.builtin")
 
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { noremap = true })
@@ -20,23 +20,5 @@ return {
 		vim.keymap.set("n", "<leader>hf", function()
 			builtin.find_files({ hidden = true, no_ignore = true })
 		end, { noremap = true })
-
-		-- This was originally a fix for a Telescope/Plenary bug where windows
-		-- would have a double border when setting vim.o.winborder = "rounded".
-		-- The original issue has been fixed but the border has a background
-		-- that is not transparent this ensures the border for the telescope
-		-- windows remain transparent.
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "TelescopeFindPre",
-			callback = function()
-				vim.opt_local.winborder = "none"
-				vim.api.nvim_create_autocmd("WinLeave", {
-					once = true,
-					callback = function()
-						vim.opt_local.winborder = "rounded"
-					end,
-				})
-			end,
-		})
 	end,
 }
