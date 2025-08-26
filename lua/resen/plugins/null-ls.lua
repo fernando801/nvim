@@ -25,7 +25,7 @@ return {
 						-- Check for explicit prettier config files
 						return utils.root_has_file({
 							-- package.json
-							"package.json",
+							-- "package.json",
 							-- .prettierrc
 							".prettierrc",
 							".prettierrc.json",
@@ -59,7 +59,7 @@ return {
 					condition = function(utils)
 						return utils.root_has_file({
 							-- package.json
-							"package.json",
+							-- "package.json",
 							-- .eslintrc
 							".eslintrc.js",
 							".eslintrc.json",
