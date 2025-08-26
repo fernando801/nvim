@@ -6,9 +6,6 @@ return {
 	config = function()
 		vim.cmd("colorscheme catppuccin-mocha")
 
-		local float_border_hl_before = vim.api.nvim_get_hl(0, { name = "FloatBorder" })
-		print(float_border_hl_before.fg)
-
 		local groups = { -- table: default groups
 			"Normal",
 			"NormalFloat",
