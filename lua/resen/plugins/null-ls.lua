@@ -51,7 +51,6 @@ return {
 						})
 					end,
 				}),
-				formatting.clang_format,
 				require("none-ls.formatting.autopep8"),
 				require("none-ls.formatting.eslint_d"),
 				require("none-ls.formatting.rustfmt"),
@@ -127,7 +126,6 @@ return {
 			automatic_installation = false,
 			ensure_installed = {
 				"stylua",
-				"clangd",
 				"prettierd",
 				"eslint_d",
 				"autopep8",
