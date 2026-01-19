@@ -25,3 +25,11 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+vim.keymap.set("n", "y", '"+y', { noremap = true, silent = true }) -- y{motion}
+vim.keymap.set("n", "yy", '"+yy', { noremap = true, silent = true }) -- yy
+vim.keymap.set("n", "Y", '"+Y', { noremap = true, silent = true }) -- Y (yank to end of line)
+
+-- Visual-mode yanks
+vim.keymap.set("x", "y", '"+y', { noremap = true, silent = true })
+vim.keymap.set("x", "Y", '"+Y', { noremap = true, silent = true })
