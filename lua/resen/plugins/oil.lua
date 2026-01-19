@@ -6,6 +6,7 @@ return {
 		keymaps = {
 			["H"] = { "actions.toggle_hidden", mode = "n" },
 			["<leader>b"] = { "actions.close", mode = "n" },
+			["<leader>-"] = { "actions.close", mode = "n" },
 		},
 	},
 	-- Optional dependencies
