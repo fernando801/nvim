@@ -20,6 +20,30 @@ return {
 		null_ls.setup({
 			sources = {
 				formatting.stylua,
+				require("none-ls.formatting.autopep8"),
+				require("none-ls.formatting.eslint_d"),
+				require("none-ls.formatting.rustfmt"),
+				require("none-ls.diagnostics.eslint_d").with({
+					condition = function(utils)
+						return utils.root_has_file({
+							-- package.json
+							-- "package.json",
+							-- .eslintrc
+							".eslintrc.js",
+							".eslintrc.json",
+							".eslintrc.cjs",
+							".eslintrc.yml",
+							".eslintrc.yaml",
+							-- eslint.config
+							"eslint.config.js",
+							"eslint.config.ts",
+							"eslint.config.mjs",
+							"eslint.config.mts",
+							"eslint.config.cjs",
+							"eslint.config.cts",
+						})
+					end,
+				}),
 				formatting.prettierd.with({
 					condition = function(utils)
 						-- Check for explicit prettier config files
@@ -48,30 +72,6 @@ return {
 							"prettier.config.cts",
 							-- toml
 							".prettierrc.toml",
-						})
-					end,
-				}),
-				require("none-ls.formatting.autopep8"),
-				require("none-ls.formatting.eslint_d"),
-				require("none-ls.formatting.rustfmt"),
-				require("none-ls.diagnostics.eslint_d").with({
-					condition = function(utils)
-						return utils.root_has_file({
-							-- package.json
-							-- "package.json",
-							-- .eslintrc
-							".eslintrc.js",
-							".eslintrc.json",
-							".eslintrc.cjs",
-							".eslintrc.yml",
-							".eslintrc.yaml",
-							-- eslint.config
-							"eslint.config.js",
-							"eslint.config.ts",
-							"eslint.config.mjs",
-							"eslint.config.mts",
-							"eslint.config.cjs",
-							"eslint.config.cts",
 						})
 					end,
 				}),
