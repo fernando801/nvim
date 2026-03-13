@@ -5,7 +5,12 @@ return {
 		vim.api.nvim_create_autocmd("FileType", {
 			pattern = "java",
 			callback = function()
-				local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+				local root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml", "mvnw", "gradlew" })
+				if not root_dir then
+					return
+				end
+
+				local project_name = vim.fn.fnamemodify(root_dir, ":t")
 				local workspace_dir = "/Users/resen/.jdtls-workspace-root/" .. project_name
 				local config = {
 					-- The command that starts the language server
@@ -13,7 +18,7 @@ return {
 					cmd = {
 
 						-- 💀
-						"/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home/bin/java", -- or '/path/to/java17_or_newer/bin/java'
+						"/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/bin/java", -- or '/path/to/java17_or_newer/bin/java'
 						-- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
 						"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -30,7 +35,7 @@ return {
 
 						-- 💀
 						"-jar",
-						"/Users/resen/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar",
+						"/Users/resen/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar",
 						-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
 						-- Must point to the                                                     Change this to
 						-- eclipse.jdt.ls installation                                           the actual version
@@ -51,7 +56,7 @@ return {
 					-- 💀
 					-- This is the default if not provided, you can remove it. Or adjust as needed.
 					-- One dedicated LSP server & client will be started per unique root_dir
-					root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
+					root_dir = root_dir,
 
 					-- Here you can configure eclipse.jdt.ls specific settings
 					-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
